@@ -3,6 +3,6 @@
 Packages for Angular Universal
 
 README:
-[Cookie](./src/cookie/README.MD)
+[Cookie](./src/cookie)
 
-[Transfer-http](./src/transfer-http/README.MD)
+[Transfer-http](./src/transfer-http)
