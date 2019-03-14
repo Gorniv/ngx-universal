@@ -1,0 +1,51 @@
+{
+  "name": "@gorniv/ngx-universal",
+  "version": "1.0.0",
+  "description": "Packages for Angular Universal",
+  "keywords": [
+    "angular",
+    "angular5",
+    "angular6",
+    "universal",
+    "angular-library",
+    "ssr",
+    "typescript"
+  ],
+  "author": "gorniv <gornivv@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gorniv/ngx-universal.git"
+  },
+  "maintainers": [
+    {
+      "name": "gorniv",
+      "email": "gornivv@gmail.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Gorniv/ngx-universal/issues"
+  },
+  "scripts": {
+    "dry": "standard-version --dry-run",
+    "standard": "standard-version"
+  },
+  "homepage": "https://github.com/Gorniv/ngx-universal",
+  "peerDependencies": {
+    "@nguniversal/express-engine/tokens": ">=6.0.0",
+    "@angular/platform-browser": ">=6.0.0",
+    "@angular/common": ">=6.0.0",
+    "@angular/core": ">=6.0.0",
+    "rxjs": ">=6.0.0"
+  },
+  "ngPackage": {
+    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+    "lib": {
+      "entryFile": "public_api.ts"
+    },
+    "dest": "./dist"
+  },
+  "devDependencies": {
+    "standard-version": "5.0.1"
+  }
+}

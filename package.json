@@ -1,0 +1,31 @@
+{
+  "name": "ngx-universal",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "packagr": "ng-packagr -p lib/ngx-universal/package.json",
+    "release:lib": "npm run prepublish:lib && cd ./lib/ngx-universal && npm i && npm run standard",
+    "prepublish:lib": "npm run packagr",
+    "publish:lib": "npm publish ./lib/ngx-universal/dist --readme --access public",
+    "release:version": "npm run release:lib && npm run publish:lib",
+    "format:check": "prettier --write --config ./.prettierrc --list-different \"lib/ngx-universal/src/*{.ts,.json,.scss}\""
+  },
+  "private": false,
+  "dependencies": {
+    "@nguniversal/express-engine": ">=6.0.0",
+    "@angular/platform-browser": ">=6.0.0",
+    "@angular/common": ">=6.0.0",
+    "@angular/compiler": ">=6.0.0",
+    "@angular/core": ">=6.0.0",
+    "@angular/compiler-cli": ">=6.0.0",
+    "typescript": ">=2.7.0",
+    "rxjs": ">=6.0.0"
+  },
+  "devDependencies": {
+    "prettier": "1.16.4",
+    "standard-version": "5.0.1",
+    "ng-packagr": "4.7.1",
+    "tsickle": "0.34.3",
+    "@types/jasmine": "3.3.9"
+  }
+}
