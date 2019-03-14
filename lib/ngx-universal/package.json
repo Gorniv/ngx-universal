@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/Gorniv/ngx-universal",
   "peerDependencies": {
-    "@nguniversal/express-engine/tokens": ">=6.0.0",
+    "@nguniversal/express-engine": ">=6.0.0",
     "@angular/platform-browser": ">=6.0.0",
     "@angular/common": ">=6.0.0",
     "@angular/core": ">=6.0.0",
