@@ -1,6 +1,6 @@
 {
   "name": "@gorniv/ngx-universal",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Packages for Angular Universal",
   "keywords": [
     "angular",
@@ -33,7 +33,6 @@
   "homepage": "https://github.com/Gorniv/ngx-universal",
   "peerDependencies": {
     "@angular/compiler": ">=6.0.0",
-
     "@nguniversal/express-engine": ">=6.0.0",
     "@angular/platform-browser": ">=6.0.0",
     "@angular/common": ">=6.0.0",
