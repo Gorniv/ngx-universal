@@ -7,7 +7,7 @@
         "app/shared/*"
       ],
       "@gorniv/*": [
-        "./../lib/*"
+        "./../lib/**"
       ]
     },
     "outDir": "./dist/out-tsc",
