@@ -3,7 +3,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 
 import { CookieService } from './cookie.service';
 import { CookieOptions } from './cookie-options.model';
-import { CookieModule } from '../../public_api';
+import { CookieModule } from '../public_api';
 
 describe('CookieService', () => {
   let injector: Injector;

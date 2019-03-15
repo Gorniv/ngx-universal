@@ -3,29 +3,35 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "packagr": "ng-packagr -p lib/ngx-universal/package.json",
-    "release:lib": "npm run prepublish:lib && cd ./lib/ngx-universal && npm i && npm run standard",
-    "prepublish:lib": "npm run packagr",
-    "publish:lib": "npm publish ./lib/ngx-universal/dist --readme --access public",
+    "build": "ng build && yarn copyStaticFiles",
+    "copyStaticFiles": "cp ./README.md ./LICENSE ./dist",
+    "release:lib": "npm run prepublish:lib && cd ./lib && npm i && npm run standard",
+    "prepublish:lib": "npm run build",
+    "publish:lib": "npm publish ./dist --readme --access public",
     "release:version": "npm run release:lib && npm run publish:lib",
     "format:check": "prettier --write --config ./.prettierrc --list-different \"lib/ngx-universal/src/*{.ts,.json,.scss}\""
   },
   "private": false,
   "dependencies": {
-    "@nguniversal/express-engine": ">=6.0.0",
-    "@angular/platform-browser": ">=6.0.0",
-    "@angular/common": ">=6.0.0",
-    "@angular/compiler": ">=6.0.0",
-    "@angular/core": ">=6.0.0",
-    "@angular/compiler-cli": ">=6.0.0",
-    "typescript": ">=2.7.0",
-    "rxjs": ">=6.0.0"
+    "@angular/common": "7.2.9",
+    "@angular/compiler-cli": "7.2.9",
+    "@angular/compiler": "7.2.9",
+    "@angular/core": "7.2.9",
+    "@angular/platform-browser": "7.2.9",
+    "@nguniversal/express-engine": "7.1.1",
+    "rxjs": "6.4.0",
+    "typescript": "3.2.4"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "0.13.6",
+    "@angular-devkit/build-ng-packagr": "0.13.6",
+    "@angular/cli": "7.3.6",
+    "@angular/compiler-cli": "7.2.9",
+    "@angular/language-service": "7.2.9",
+    "@types/jasmine": "3.3.10",
+    "ng-packagr": "4.7.1",
     "prettier": "1.16.4",
     "standard-version": "5.0.1",
-    "ng-packagr": "4.7.1",
-    "tsickle": "0.34.3",
-    "@types/jasmine": "3.3.9"
+    "tsickle": "0.34.3"
   }
 }
