@@ -8,3 +8,6 @@ export * from './cookie/cookie-options-provider';
 export * from './cookie/cookie.factory';
 export * from './cookie/utils';
 export * from './cookie/cookie.module';
+
+export {LinkModule} from './link/link.module';
+export {LinkService} from './link/link.service';
