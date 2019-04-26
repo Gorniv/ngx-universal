@@ -26,12 +26,14 @@ export class CookieBackendService extends CookieService {
 
   put(key: string, value: string, options: CookieOptions = {}): void {
     this.getAll()[key] = value;
-    this.request.headers.cookie = Object.keys(this.getAll())
+    const newCookie = Object.keys(this.getAll())
       // tslint:disable-next-line: no-shadowed-variable
       .map((key) => {
         return `${key}=${this.get(key)}`;
       })
       .join('; ');
-    this.response.cookie(key, value, options);
+    this.request.headers.cookie = newCookie;
+    // not sure
+    this.cookieString = newCookie;
   }
 }
