@@ -9,7 +9,7 @@
     "prepublish:lib": "npm run build",
     "publish:lib": "npm publish ./dist --readme --access public",
     "release:version": "npm run release:lib && npm run publish:lib",
-    "format:check": "prettier --write --config ./.prettierrc --list-different \"lib/ngx-universal/src/*{.ts,.json,.scss}\""
+    "format:check": "prettier --write --config ./.prettierrc --list-different \"lib/src/*{.ts,.json,.scss}\""
   },
   "private": false,
   "dependencies": {
