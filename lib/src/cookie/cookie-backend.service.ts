@@ -19,14 +19,19 @@ export class CookieBackendService extends CookieService {
     return this.request.cookie || this.request.headers['cookie'] || '';
   }
 
-  put(key: string, value: string, options: CookieOptions = {}) {
+  protected set cookieString(val: string) {
+    this.request.cookie = val;
+    this.response.cookie = val;
+  }
+
+  put(key: string, value: string, options: CookieOptions = {}): void {
     this.getAll()[key] = value;
     this.request.headers.cookie = Object.keys(this.getAll())
+      // tslint:disable-next-line: no-shadowed-variable
       .map((key) => {
         return `${key}=${this.get(key)}`;
       })
       .join('; ');
-
     this.response.cookie(key, value, options);
   }
 }
