@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.1](https://github.com/Gorniv/ngx-universal/compare/v1.1.0...v1.1.1) (2019-04-26)
+
+
+### Bug Fixes
+
+* override put function instead of trying to set cookieString https://github.com/salemdar/ngx-cookie/pull/82 ([d87c6d4](https://github.com/Gorniv/ngx-universal/commit/d87c6d4))
+
+
+
 # [1.1.0](https://github.com/Gorniv/ngx-universal/compare/v1.0.9...v1.1.0) (2019-03-21)
 
 
