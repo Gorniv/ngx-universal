@@ -25,11 +25,33 @@ export class CookieBackendService extends CookieService {
   }
 
   put(key: string, value: string, options: CookieOptions = {}): void {
-    this.getAll()[key] = value;
+    let findKey = false;
+    let newCookie = Object.keys(this.getAll())
+      // tslint:disable-next-line: no-shadowed-variable
+      .map((keyItem) => {
+        if (keyItem === key) {
+          findKey = true;
+          return `${key}=${value}`;
+        }
+        return `${keyItem}=${this.get(keyItem)}`;
+      })
+      .join('; ');
+    if (!findKey) {
+      newCookie += `; ${key}=${value};`;
+    }
+    this.request.headers.cookie = newCookie;
+    // not sure
+    this.cookieString = newCookie;
+  }
+
+  remove(key: string, options?: CookieOptions): void {
     const newCookie = Object.keys(this.getAll())
       // tslint:disable-next-line: no-shadowed-variable
-      .map((key) => {
-        return `${key}=${this.get(key)}`;
+      .map((keyItem) => {
+        if (keyItem === key) {
+          return '';
+        }
+        return `${keyItem}=${this.get(keyItem)}`;
       })
       .join('; ');
     this.request.headers.cookie = newCookie;
