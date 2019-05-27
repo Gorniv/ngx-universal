@@ -1,7 +1,7 @@
 // https://github.com/angular/angular/issues/15776#issuecomment-291862953
 
 import { Injectable, Optional, RendererFactory2, ViewEncapsulation, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
