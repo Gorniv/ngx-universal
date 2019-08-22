@@ -27,9 +27,9 @@ You can install this package locally with npm.
 
 ```bash
 # To get the latest stable version and update package.json file:
-npm install ngx-universal --save
+npm install @gorniv/ngx-universal --save
 # or
-# yarn add ngx-universal
+# yarn add @gorniv/ngx-universal
 ```
 
 After installing the library, it should be included in the SystemJS configurations.
