@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.1](https://github.com/Gorniv/ngx-universal/compare/v1.1.5...v1.2.1) (2019-08-31)
+
+
+
 ## [1.1.5](https://github.com/Gorniv/ngx-universal/compare/v1.1.4...v1.1.5) (2019-05-27)
 
 
