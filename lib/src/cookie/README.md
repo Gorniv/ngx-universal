@@ -150,13 +150,13 @@ import { CookieService, CookieBackendService } from 'ngx-universal';
 export class AppServerModule {}
 ```
 
-Next, we need to make providers for the `'REQUEST'` and `'RESPONSE'` objects created by the expressjs server during SSR. You can check out the `CookieBackendService` code, but during SSR `ngx-universal` inject's these objects into `CookieBackendService`. To do this, edit `server.ts` (located in the root of the Universal Starter Project) to create providers for `'REQUEST'` AND `'RESPONSE'`.
+Next, we need to make providers for the `'NgxRequest'` and `'NgxResponce'` objects created by the expressjs server during SSR. You can check out the `CookieBackendService` code, but during SSR `ngx-universal` inject's these objects into `CookieBackendService`. To do this, edit `server.ts` (located in the root of the Universal Starter Project) to create providers for `'NgxRequest'` AND `'NgxResponce'`.
 
 ```
 /* server.ts */
 
 // Find the call to res.render() in the file and
-// update it with providers for 'REQUEST' and 'RESPONSE'
+// update it with providers for 'NgxRequest' and 'NgxResponce'
 
 app.get('*', (req, res) => {
   res.render('index', {
@@ -164,10 +164,10 @@ app.get('*', (req, res) => {
     res: res,
     providers: [
       {
-        provide: 'REQUEST', useValue: (req)
+        provide: 'NgxRequest', useValue: (req)
       },
       {
-        provide: 'RESPONSE', useValue: (res)
+        provide: 'NgxResponce', useValue: (res)
       }
     ]
   });

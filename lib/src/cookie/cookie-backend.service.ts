@@ -1,15 +1,15 @@
 import { Inject, Injectable } from '@angular/core';
-import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 
 import { CookieService } from './cookie.service';
 import { CookieOptionsProvider } from './cookie-options-provider';
 import { CookieOptions } from './cookie-options.model';
+import { NgxRequest, NgxResponce } from './tokens';
 
 @Injectable()
 export class CookieBackendService extends CookieService {
   constructor(
-    @Inject(REQUEST) private request: any,
-    @Inject(RESPONSE) private response: any,
+    @Inject(NgxRequest) private request: any,
+    @Inject(NgxResponce) private response: any,
     _optionsProvider: CookieOptionsProvider,
   ) {
     super(_optionsProvider);
@@ -37,7 +37,7 @@ export class CookieBackendService extends CookieService {
       })
       .join('; ');
     if (!findKey) {
-      newCookie += `; ${key}=${value};`;
+      newCookie += `; ${key}=${value}`;
     }
     this.request.headers.cookie = newCookie;
     // not sure
