@@ -1,6 +1,6 @@
 {
   "name": "@gorniv/ngx-universal",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Packages for Angular Universal",
   "keywords": [
     "angular",
