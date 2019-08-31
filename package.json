@@ -20,7 +20,7 @@
     "@angular/platform-browser": "8.2.4",
     "@nguniversal/express-engine": "8.1.1",
     "rxjs": "6.5.2",
-    "typescript": "3.6.2",
+    "typescript": "3.5.1",
     "zone.js": "0.10.2"
   },
   "devDependencies": {
