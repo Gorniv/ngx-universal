@@ -1,4 +1,8 @@
+
 # fork ngx-cookie [![npm version](https://img.shields.io/npm/v/@gorniv/ngx-universal.svg)](https://www.npmjs.com/package/@gorniv/ngx-universal) [![Downloads](http://img.shields.io/npm/dm/@gorniv/ngx-universal.svg)](https://npmjs.org/package/@gorniv/ngx-universal)
+
+# v2. Breaking changes:
+use `NgxRequest` and `NgxResponce` (replace REQUEST and RESPONSE)
 
 ## Table of contents:
 
