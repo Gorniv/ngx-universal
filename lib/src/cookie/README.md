@@ -2,7 +2,7 @@
 # fork ngx-cookie [![npm version](https://img.shields.io/npm/v/@gorniv/ngx-universal.svg)](https://www.npmjs.com/package/@gorniv/ngx-universal) [![Downloads](http://img.shields.io/npm/dm/@gorniv/ngx-universal.svg)](https://npmjs.org/package/@gorniv/ngx-universal)
 
 # v2. Breaking changes:
-use `NgxRequest` and `NgxResponce` (replace REQUEST and RESPONSE)
+use `NgxRequest` and `NgxResponse` (replace REQUEST and RESPONSE)
 
 ## Table of contents:
 
@@ -154,13 +154,13 @@ import { CookieService, CookieBackendService } from 'ngx-universal';
 export class AppServerModule {}
 ```
 
-Next, we need to make providers for the `'NgxRequest'` and `'NgxResponce'` objects created by the expressjs server during SSR. You can check out the `CookieBackendService` code, but during SSR `ngx-universal` inject's these objects into `CookieBackendService`. To do this, edit `server.ts` (located in the root of the Universal Starter Project) to create providers for `'NgxRequest'` AND `'NgxResponce'`.
+Next, we need to make providers for the `'NgxRequest'` and `'NgxResponse'` objects created by the expressjs server during SSR. You can check out the `CookieBackendService` code, but during SSR `ngx-universal` inject's these objects into `CookieBackendService`. To do this, edit `server.ts` (located in the root of the Universal Starter Project) to create providers for `'NgxRequest'` AND `'NgxResponse'`.
 
 ```
 /* server.ts */
 
 // Find the call to res.render() in the file and
-// update it with providers for 'NgxRequest' and 'NgxResponce'
+// update it with providers for 'NgxRequest' and 'NgxResponse'
 
 app.get('*', (req, res) => {
   res.render('index', {
@@ -171,7 +171,7 @@ app.get('*', (req, res) => {
         provide: 'NgxRequest', useValue: (req)
       },
       {
-        provide: 'NgxResponce', useValue: (res)
+        provide: 'NgxResponse', useValue: (res)
       }
     ]
   });

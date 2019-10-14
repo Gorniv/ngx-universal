@@ -3,13 +3,13 @@ import { Inject, Injectable } from '@angular/core';
 import { CookieService } from './cookie.service';
 import { CookieOptionsProvider } from './cookie-options-provider';
 import { CookieOptions } from './cookie-options.model';
-import { NgxRequest, NgxResponce } from './tokens';
+import { NgxRequest, NgxResponse } from './tokens';
 
 @Injectable()
 export class CookieBackendService extends CookieService {
   constructor(
     @Inject(NgxRequest) private request: any,
-    @Inject(NgxResponce) private response: any,
+    @Inject(NgxResponse) private response: any,
     _optionsProvider: CookieOptionsProvider,
   ) {
     super(_optionsProvider);
