@@ -2,6 +2,6 @@ export class NgxRequest {
 
 }
 
-export class NgxResponce {
+export class NgxResponse {
 
 }
