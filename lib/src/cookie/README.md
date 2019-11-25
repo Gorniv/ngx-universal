@@ -69,7 +69,7 @@ After installing the library, it should be included in the SystemJS configuratio
       // other libraries
       rxjs: 'npm:rxjs',
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
-      'ngx-universal': 'npm:ngx-universal/bundles/ngx-universal.umd.js',
+      ''@gorniv/ngx-universal'': 'npm:'@gorniv/ngx-universal'/bundles/ngx-universal.umd.js',
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -98,7 +98,7 @@ These methods accepts `CookieOptions` objects as well. Leave it blank for the de
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { CookieModule } from 'ngx-universal';
+import { CookieModule } from '@gorniv/ngx-universal';
 
 import { AppComponent } from './app.component';
 
@@ -112,7 +112,7 @@ export class AppModule {}
 
 ```typescript
 import { Component } from '@angular/core';
-import { CookieService } from 'ngx-universal';
+import { CookieService } from '@gorniv/ngx-universal';
 
 @Component({
   selector: 'my-very-cool-app',
@@ -129,18 +129,18 @@ export class AppComponent {
 
 ### <a name="universal"></a> Angular Universal Usage
 
-`ngx-universal` supports usage during Server Side Rendering (SSR / Angular Universal). Getting Server Side Rendering itself set up the first time can be tricky and is outside the scope of this guide. Here, we'll assume that you've got a working SSR setup similar to the [Angular Universal Starter project](https://github.com/angular/universal-starter), and you're just trying to get `ngx-universal` working with SSR.
+`@gorniv/ngx-universal` supports usage during Server Side Rendering (SSR / Angular Universal). Getting Server Side Rendering itself set up the first time can be tricky and is outside the scope of this guide. Here, we'll assume that you've got a working SSR setup similar to the [Angular Universal Starter project](https://github.com/angular/universal-starter), and you're just trying to get `@gorniv/ngx-universal` working with SSR.
 
-_Note: during normal, client side usage, `ngx-universal` manipulates the client cookies attached to the `document` object. During SSR, `ngx-universal` will manipulate cookies in http request or response headers._
+_Note: during normal, client side usage, `@gorniv/ngx-universal` manipulates the client cookies attached to the `document` object. During SSR, `@gorniv/ngx-universal` will manipulate cookies in http request or response headers._
 
 #### Setup
 
-First up, edit `app.server.module.ts` (located in `root > src > app` of the Universal starter project) to overwrite ngx-universal's `CookieService` with ngx-universal's `CookieBackendService` during server side rendering.
+First up, edit `app.server.module.ts` (located in `root > src > app` of the Universal starter project) to overwrite @gorniv/ngx-universal's `CookieService` with @gorniv/ngx-universal's `CookieBackendService` during server side rendering.
 
 ```
 /* app.server.module.ts */
 
-import { CookieService, CookieBackendService } from 'ngx-universal';
+import { CookieService, CookieBackendService } from '@gorniv/ngx-universal';
 
 @NgModule({
   imports: [
@@ -154,7 +154,7 @@ import { CookieService, CookieBackendService } from 'ngx-universal';
 export class AppServerModule {}
 ```
 
-Next, we need to make providers for the `'NgxRequest'` and `'NgxResponse'` objects created by the expressjs server during SSR. You can check out the `CookieBackendService` code, but during SSR `ngx-universal` inject's these objects into `CookieBackendService`. To do this, edit `server.ts` (located in the root of the Universal Starter Project) to create providers for `'NgxRequest'` AND `'NgxResponse'`.
+Next, we need to make providers for the `'NgxRequest'` and `'NgxResponse'` objects created by the expressjs server during SSR. You can check out the `CookieBackendService` code, but during SSR `@gorniv/ngx-universal` inject's these objects into `CookieBackendService`. To do this, edit `server.ts` (located in the root of the Universal Starter Project) to create providers for `'NgxRequest'` AND `'NgxResponse'`.
 
 ```
 /* server.ts */
@@ -189,7 +189,7 @@ Here you can find some usage examples with popular boilerplate libraries.
 A boilerplate provided by Angular team.
 _(Link: [https://github.com/angular/quickstart](https://github.com/angular/quickstart))_
 
-Just edit the `systemjs.config.js` file and add the `ngx-universal` there.
+Just edit the `systemjs.config.js` file and add the `@gorniv/ngx-universal` there.
 
 ```typescript
 /**
@@ -221,7 +221,7 @@ Just edit the `systemjs.config.js` file and add the `ngx-universal` there.
       // other libraries
       rxjs: 'npm:rxjs',
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
-      'ngx-universal': 'npm:ngx-universal/bundles/ngx-universal.umd.js',
+      '@gorniv/ngx-universal': 'npm:@gorniv/ngx-universal/bundles/ngx-universal.umd.js',
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -251,9 +251,9 @@ Add the following settings to the (constructor of) `ProjectConfig` class (path: 
 ```typescript
 let additionalPackages: ExtendPackages[] = [
   {
-    name: 'ngx-universal',
+    name: '@gorniv/ngx-universal,
     // Path to the package's bundle
-    path: 'node_modules/ngx-universal/bundles/ngx-universal.umd.js',
+    path: 'node_modules/@gorniv/ngx-universal/bundles/ngx-universal.umd.js',
   },
 ];
 
