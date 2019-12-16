@@ -54,6 +54,27 @@ getData(): void{
 }
 
 ```
+```
+/* server.ts */
+
+// Find the call to res.render() in the file and
+// update it with providers for 'NgxRequest' and 'NgxResponse'
+
+app.get('*', (req, res) => {
+  res.render('index', {
+    req: req,
+    res: res,
+    providers: [
+      {
+        provide: 'NgxRequest', useValue: (req)
+      },
+      {
+        provide: 'NgxResponse', useValue: (res)
+      }
+    ]
+  });
+});
+```
 
 check:
 
