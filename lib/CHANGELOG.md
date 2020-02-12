@@ -1,6 +1,14 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.1.0](https://github.com/Gorniv/ngx-universal/compare/v2.0.1...v2.1.0) (2020-02-12)
+
+
+### Features
+
+* angular 9 ([b60b2e2](https://github.com/Gorniv/ngx-universal/commit/b60b2e24347893de8f2c9bc7f310176a3743d373))
+* ng update @angular/core ([442e6dc](https://github.com/Gorniv/ngx-universal/commit/442e6dc24611ce08791c0d517865d2b90789ef84))
 
 ## [2.0.1](https://github.com/Gorniv/ngx-universal/compare/v1.2.1...v2.0.1) (2019-08-31)
 
