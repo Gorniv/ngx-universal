@@ -9,7 +9,8 @@
     "prepublish:lib": "npm run build",
     "publish:lib": "npm publish ./dist --readme --access public",
     "release:version": "npm run release:lib && npm run publish:lib",
-    "format:check": "prettier --write --config ./.prettierrc --list-different \"lib/src/*{.ts,.json,.scss}\""
+    "format:check": "prettier --write --config ./.prettierrc --list-different \"lib/src/*{.ts,.json,.scss}\"",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "private": false,
   "dependencies": {
@@ -20,12 +21,13 @@
     "@angular/platform-browser": "9.0.0",
     "@nguniversal/express-engine": "9.0.0",
     "rxjs": "6.5.4",
+    "tslib": "1.10.0",
     "typescript": "3.7.5",
-    "zone.js": "0.10.2"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.900.1",
-    "@angular-devkit/build-ng-packagr": "0.900.1",
+    "@angular-devkit/build-angular": "~0.900.1",
+    "@angular-devkit/build-ng-packagr": "~0.900.1",
     "@angular/platform-browser-dynamic": "9.0.0",
     "@angular/cli": "9.0.1",
     "@angular/language-service": "9.0.0",
@@ -35,7 +37,6 @@
     "prettier": "1.19.1",
     "rxjs-tslint": "0.1.7",
     "standard-version": "7.1.0",
-    "tsickle": "0.38.0",
     "tslint-consistent-codestyle": "1.16.0",
     "tslint-defocus": "2.0.6",
     "tslint-eslint-rules": "5.4.0",

@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 2,
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "ngx-universal": {
@@ -17,7 +17,8 @@
           },
           "configurations": {
             "production": {
-              "project": "lib/ng-package.prod.json"
+              "project": "lib/ng-package.prod.json",
+              "tsConfig": "lib/tsconfig.lib.prod.json"
             }
           }
         },
@@ -32,17 +33,15 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "lib/tsconfig.lib.json",
-              "lib/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["lib/tsconfig.lib.json", "lib/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
     }
   },
-  "defaultProject": "ngx-universal"
+  "defaultProject": "ngx-universal",
+  "cli": {
+    "analytics": false
+  }
 }
