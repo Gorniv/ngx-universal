@@ -21,7 +21,7 @@ export class CookieBackendService extends CookieService {
 
   protected set cookieString(val: string) {
     this.request.cookie = val;
-    this.response.cookie = val;
+    this.request.headers.cookie = val;
   }
 
   put(key: string, value: string, options: CookieOptions = {}): void {
@@ -39,9 +39,8 @@ export class CookieBackendService extends CookieService {
     if (!findKey) {
       newCookie += `; ${key}=${value}`;
     }
-    this.request.headers.cookie = newCookie;
-    // not sure
     this.cookieString = newCookie;
+    this.response.cookie(key, value);
   }
 
   remove(key: string, options?: CookieOptions): void {
@@ -54,8 +53,8 @@ export class CookieBackendService extends CookieService {
         return `${keyItem}=${this.get(keyItem)}`;
       })
       .join('; ');
-    this.request.headers.cookie = newCookie;
-    // not sure
+
     this.cookieString = newCookie;
+    this.response.clearCookie(key);
   }
 }
