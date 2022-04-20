@@ -19,7 +19,7 @@
     "@angular/compiler": "11.2.14",
     "@angular/core": "11.2.14",
     "@angular/platform-browser": "11.2.14",
-    "@nguniversal/express-engine": "10.1.0",
+    "@nguniversal/express-engine": "11.2.1",
     "rxjs": "6.5.4",
     "tslib": "2.3.1",
     "zone.js": "~0.10.3"
