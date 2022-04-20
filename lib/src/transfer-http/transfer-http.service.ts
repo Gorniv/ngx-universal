@@ -1,9 +1,9 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common';
 import { TransferState, StateKey, makeStateKey } from '@angular/platform-browser';
 import { Observable, from } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class TransferHttpService {
@@ -11,7 +11,8 @@ export class TransferHttpService {
     protected transferState: TransferState,
     private httpClient: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object,
-  ) {}
+  ) {
+  }
 
   request<T>(
     method: string,
@@ -21,15 +22,15 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       reportProgress?: boolean;
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       responseType?: 'json';
       withCredentials?: boolean;
     },
@@ -49,14 +50,14 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
@@ -78,14 +79,14 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
@@ -114,14 +115,14 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'body';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
@@ -148,14 +149,14 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
@@ -177,14 +178,14 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
@@ -212,14 +213,14 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
@@ -240,14 +241,14 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
