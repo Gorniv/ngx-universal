@@ -1,5 +1,5 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common';
 import { TransferState, StateKey, makeStateKey } from '@angular/platform-browser';
 import { Observable, from } from 'rxjs';
 import { tap } from 'rxjs/operators';
