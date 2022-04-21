@@ -21,8 +21,7 @@ describe('CookieService', () => {
 
   afterEach(() => {
     cookieService.removeAll();
-    injector = undefined;
-    cookieService = undefined;
+
   });
 
   it('is defined', () => {

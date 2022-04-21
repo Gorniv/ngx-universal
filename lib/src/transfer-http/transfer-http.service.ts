@@ -35,9 +35,8 @@ export class TransferHttpService {
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
-    return this.getData<T>(method, uri, options, (method: string, url: string, options: any) => {
-      return this.httpClient.request<T>(method, url, options);
+    return this.getData<T>(method, uri, options, (method: string, uri: string | Request, options: any) => {
+      return this.httpClient.request<T>(method, typeof uri === 'string' ? uri : uri.url, options);
     });
   }
 
@@ -63,8 +62,7 @@ export class TransferHttpService {
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
-    return this.getData<T>('get', url, options, (_method: string, url: string, options: any) => {
+    return this.getData<T>('get', url, options, (_method: string, uri: string | Request, options: any) => {
       return this.httpClient.get<T>(url, options);
     });
   }
@@ -92,14 +90,12 @@ export class TransferHttpService {
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
     return this.getPostData<T>(
       'post',
       url,
       body,
       options,
-      // tslint:disable-next-line:no-shadowed-variable
-      (_method: string, url: string, body: any, options: any) => {
+      (_method: string, uri: string | Request, body: any, options: any) => {
         return this.httpClient.post<T>(url, body, options);
       },
     );
@@ -128,13 +124,12 @@ export class TransferHttpService {
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
     return this.getPostData<T>(
       'put',
       url,
       _body,
       options,
-      (_method: string, url: string, _body: any, options: any) => {
+      (_method: string, uri: string | Request, _body: any, options: any) => {
         return this.httpClient.put<T>(url, _body, options);
       },
     );
@@ -162,8 +157,7 @@ export class TransferHttpService {
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
-    return this.getData<T>('delete', url, options, (_method: string, url: string, options: any) => {
+    return this.getData<T>('delete', url, options, (_method: string, uri: string | Request, options: any) => {
       return this.httpClient.delete<T>(url, options);
     });
   }
@@ -191,14 +185,12 @@ export class TransferHttpService {
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
     return this.getPostData<T>(
       'patch',
       url,
       body,
       options,
-      // tslint:disable-next-line:no-shadowed-variable
-      (_method: string, url: string, body: any, options: any): Observable<any> => {
+      (_method: string, uri: string | Request, body: any, options: any): Observable<any> => {
         return this.httpClient.patch<T>(url, body, options);
       },
     );
@@ -226,8 +218,7 @@ export class TransferHttpService {
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
-    return this.getData<T>('head', url, options, (_method: string, url: string, options: any) => {
+    return this.getData<T>('head', url, options, (_method: string, uri: string | Request, options: any) => {
       return this.httpClient.head<T>(url, options);
     });
   }
@@ -254,19 +245,16 @@ export class TransferHttpService {
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
     return this.getData<T>(
       'options',
       url,
       options,
-      // tslint:disable-next-line:no-shadowed-variable
-      (_method: string, url: string, options: any) => {
+      (_method: string, uri: string | Request, options: any) => {
         return this.httpClient.options<T>(url, options);
       },
     );
   }
 
-  // tslint:disable-next-line:max-line-length
   private getData<T>(
     method: string,
     uri: string | Request,
@@ -355,6 +343,6 @@ export class TransferHttpService {
   }
 
   private getFromCache<T>(key: StateKey<T>): T {
-    return this.transferState.get<T>(key, null);
+    return this.transferState.get<T>(key, {} as T);
   }
 }

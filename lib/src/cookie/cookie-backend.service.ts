@@ -15,16 +15,16 @@ export class CookieBackendService extends CookieService {
     super(_optionsProvider);
   }
 
-  protected get cookieString(): string {
+  protected override get cookieString(): string {
     return this.request.cookie || this.request.headers['cookie'] || '';
   }
 
-  protected set cookieString(val: string) {
+  protected override set cookieString(val: string) {
     this.request.cookie = val;
     this.response.cookie = val;
   }
 
-  put(key: string, value: string, options: CookieOptions = {}): void {
+  overrideput(key: string, value: string, options: CookieOptions = {}): void {
     let findKey = false;
     let newCookie = Object.keys(this.getAll())
       // tslint:disable-next-line: no-shadowed-variable
@@ -44,7 +44,7 @@ export class CookieBackendService extends CookieService {
     this.cookieString = newCookie;
   }
 
-  remove(key: string, options?: CookieOptions): void {
+  override remove(key: string, options?: CookieOptions): void {
     const newCookie = Object.keys(this.getAll())
       // tslint:disable-next-line: no-shadowed-variable
       .map((keyItem) => {

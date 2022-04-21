@@ -158,12 +158,12 @@ export class CookieService implements ICookieService {
   private _cookieWriter() {
     const that = this;
 
-    return function (name: string, value: string, options?: CookieOptions) {
+    return function (name: string, value: string | undefined, options?: CookieOptions) {
       that.cookieString = that._buildCookieString(name, value, options);
     };
   }
 
-  private _buildCookieString(name: string, value: string, options?: CookieOptions): string {
+  private _buildCookieString(name: string, value: string | undefined, options?: CookieOptions): string {
     const opts: CookieOptions = mergeOptions(this.options, options);
     let expires: any = opts.expires;
     if (isBlank(value)) {
@@ -173,7 +173,7 @@ export class CookieService implements ICookieService {
     if (isString(expires)) {
       expires = new Date(expires);
     }
-    const cookieValue = opts.storeUnencoded ? value : encodeURIComponent(value);
+    const cookieValue = opts.storeUnencoded ? value : encodeURIComponent(value || '');
     let str = encodeURIComponent(name) + '=' + cookieValue;
     str += opts.path ? ';path=' + opts.path : '';
     str += opts.domain ? ';domain=' + opts.domain : '';
