@@ -38,6 +38,6 @@
     "typescript": ">=2.7.0"
   },
   "devDependencies": {
-    "standard-version": "7.1.0"
+    "standard-version": "9.5.0"
   }
 }
