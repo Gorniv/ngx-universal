@@ -6,10 +6,10 @@ import { DOCUMENT } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
-/* 
+/*
  * -- LinkService --        [Temporary]
  * @MarkPieszak
- * 
+ *
  * Similar to Meta service but made to handle <link> creation for SEO purposes
  * -- NOTE: Soon there will be an overall DocumentService within Angular that handles Meta/Link everything
  */
@@ -19,7 +19,7 @@ export class LinkService {
 
     constructor(
         private rendererFactory: RendererFactory2,
-        @Inject(DOCUMENT) private document
+        @Inject(DOCUMENT) private document: Document
     ) {
     }
 

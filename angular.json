@@ -4,23 +4,25 @@
   "newProjectRoot": "projects",
   "projects": {
     "ngx-universal": {
+      "projectType": "library",
       "root": "lib",
       "sourceRoot": "lib/src",
-      "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "lib/tsconfig.lib.json",
             "project": "lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "lib/ng-package.prod.json",
               "tsConfig": "lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "lib/tsconfig.lib.json"
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -28,13 +30,6 @@
             "main": "lib/src/test.ts",
             "tsConfig": "lib/tsconfig.spec.json",
             "karmaConfig": "lib/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["lib/tsconfig.lib.json", "lib/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
           }
         }
       }

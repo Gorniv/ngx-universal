@@ -1,9 +1,9 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { TransferState, StateKey, makeStateKey } from '@angular/platform-browser';
 import { Observable, from } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class TransferHttpService {
@@ -11,7 +11,8 @@ export class TransferHttpService {
     protected transferState: TransferState,
     private httpClient: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object,
-  ) {}
+  ) {
+  }
 
   request<T>(
     method: string,
@@ -21,22 +22,21 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       reportProgress?: boolean;
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       responseType?: 'json';
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
-    return this.getData<T>(method, uri, options, (method: string, url: string, options: any) => {
-      return this.httpClient.request<T>(method, url, options);
+    return this.getData<T>(method, uri, options, (method: string, uri: string | Request, options: any) => {
+      return this.httpClient.request<T>(method, typeof uri === 'string' ? uri : uri.url, options);
     });
   }
 
@@ -49,21 +49,20 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
-    return this.getData<T>('get', url, options, (_method: string, url: string, options: any) => {
+    return this.getData<T>('get', url, options, (_method: string, uri: string | Request, options: any) => {
       return this.httpClient.get<T>(url, options);
     });
   }
@@ -78,27 +77,25 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
     return this.getPostData<T>(
       'post',
       url,
       body,
       options,
-      // tslint:disable-next-line:no-shadowed-variable
-      (_method: string, url: string, body: any, options: any) => {
+      (_method: string, uri: string | Request, body: any, options: any) => {
         return this.httpClient.post<T>(url, body, options);
       },
     );
@@ -114,26 +111,25 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'body';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
     return this.getPostData<T>(
       'put',
       url,
       _body,
       options,
-      (_method: string, url: string, _body: any, options: any) => {
+      (_method: string, uri: string | Request, _body: any, options: any) => {
         return this.httpClient.put<T>(url, _body, options);
       },
     );
@@ -148,21 +144,20 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
-    return this.getData<T>('delete', url, options, (_method: string, url: string, options: any) => {
+    return this.getData<T>('delete', url, options, (_method: string, uri: string | Request, options: any) => {
       return this.httpClient.delete<T>(url, options);
     });
   }
@@ -177,27 +172,25 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
     return this.getPostData<T>(
       'patch',
       url,
       body,
       options,
-      // tslint:disable-next-line:no-shadowed-variable
-      (_method: string, url: string, body: any, options: any): Observable<any> => {
+      (_method: string, uri: string | Request, body: any, options: any): Observable<any> => {
         return this.httpClient.patch<T>(url, body, options);
       },
     );
@@ -212,21 +205,20 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
-    return this.getData<T>('head', url, options, (_method: string, url: string, options: any) => {
+    return this.getData<T>('head', url, options, (_method: string, uri: string | Request, options: any) => {
       return this.httpClient.head<T>(url, options);
     });
   }
@@ -240,32 +232,29 @@ export class TransferHttpService {
       headers?:
         | HttpHeaders
         | {
-            [header: string]: string | string[];
-          };
+        [header: string]: string | string[];
+      };
       observe?: 'response';
       params?:
         | HttpParams
         | {
-            [param: string]: string | string[];
-          };
+        [param: string]: string | string[];
+      };
       reportProgress?: boolean;
       responseType?: 'json';
       withCredentials?: boolean;
     },
   ): Observable<T> {
-    // tslint:disable-next-line:no-shadowed-variable
     return this.getData<T>(
       'options',
       url,
       options,
-      // tslint:disable-next-line:no-shadowed-variable
-      (_method: string, url: string, options: any) => {
+      (_method: string, uri: string | Request, options: any) => {
         return this.httpClient.options<T>(url, options);
       },
     );
   }
 
-  // tslint:disable-next-line:max-line-length
   private getData<T>(
     method: string,
     uri: string | Request,
@@ -354,6 +343,6 @@ export class TransferHttpService {
   }
 
   private getFromCache<T>(key: StateKey<T>): T {
-    return this.transferState.get<T>(key, null);
+    return this.transferState.get<T>(key, {} as T);
   }
 }
