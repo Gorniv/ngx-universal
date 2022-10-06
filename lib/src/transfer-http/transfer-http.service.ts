@@ -342,7 +342,7 @@ export class TransferHttpService {
     return this.transferState.set<T>(key, data);
   }
 
-  private getFromCache<T>(key: StateKey<T>): T {
-    return this.transferState.get<T>(key, {} as T);
+  private getFromCache<T>(key: StateKey<T>): T | null {
+    return this.transferState.get<T | null>(key, null);
   }
 }
